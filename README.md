@@ -133,5 +133,73 @@ uh the fact that I I woke up at 6:30
 
 You can then upload the transcripts into a custom GPT.
 
-Note: Scripts and Python code were created with the assistance of Claude Sonnet 3.7
+** Preparing a knowledge base to concatenate files **
+
+The script **maketocs.sh** can be used to create toc.txt (Table of Contents) files in subdirectories under the **kb** directory containing a markdown list of all TXT files (without the extension).  This file is needed in order to use the scripts in the **bin** directory to generate files in the **production** directory.
+
+Example:
+```
+./maketocs.sh
+/Users/ericrangell/downloads/git/GCCgpt/kb/2020_partial
+/Users/ericrangell/downloads/git/GCCgpt/kb/2021
+/Users/ericrangell/downloads/git/GCCgpt/kb/2022
+/Users/ericrangell/downloads/git/GCCgpt/kb/2023
+/Users/ericrangell/downloads/git/GCCgpt/kb/2024
+/Users/ericrangell/downloads/git/GCCgpt/kb/2025
+/Users/ericrangell/downloads/git/GCCgpt/kb/before2020
+```
+
+Example toc.txt file created in before2020 subdirectory:
+```
+- 20120612_Collaborology_Study_Group__nF2tGrjlMPM__en
+- 20160508_0603_MOAD50_DKR2__p_-sINKkR9I__ar
+- 20180721_GCC_Saturday_Barn_Raising_-_Sam__Day1__86pTxtOfgZk__ar
+- 20191019_GCC_Saturday_Barn_Raising__2fkDKVeKehY__ar
+- 20191027_GCC_Sunday_Unblocking__jDyLS7wBWCI__ar
+```
+
+The build.sh script needs to be edited at the end to have one command for each subdirectory in the kb directory:
+```
+$buildcmd before2020 2> $outpath/build-before2020.txt
+$buildcmd 2020_partial 2> $outpath/build-2020-partial.txt
+$buildcmd 2021 2> $outpath/build-2021.txt
+$buildcmd 2022 2> $outpath/build-2022.txt
+$buildcmd 2023 2> $outpath/build-2023.txt
+$buildcmd 2024 2> $outpath/build-2024.txt
+$buildcmd 2025 2> $outpath/build-2025.txt
+```
+
+After running ./build.sh log files are created in the **bin/output** directory.  These log files should be manually reviewed, then errors should be corrected until the build runs cleanly.
+
+Concatenated files are stored in the **production** directory.
+Within each file, the source filename is printed, followed by the contents.  These files may be uploaded to a ChatGPT knowledge base.
+
+Example:
+```
+production % ls -l
+total 59624
+-rw-r--r--  1 ericrangell  staff  2936837 May 31 09:18 2020_partial.txt
+-rw-r--r--  1 ericrangell  staff  8826753 May 31 09:18 2021.txt
+-rw-r--r--  1 ericrangell  staff  7339384 May 31 09:18 2022.txt
+-rw-r--r--  1 ericrangell  staff  5819919 May 31 09:18 2023.txt
+-rw-r--r--  1 ericrangell  staff  4427462 May 31 09:18 2024.txt
+-rw-r--r--  1 ericrangell  staff   644484 May 31 09:18 2025.txt
+-rw-r--r--  1 ericrangell  staff   521501 May 31 09:18 before2020.txt
+```
+
+```
+head 2021.txt
+Source Filename:
+
+2021/202100828_GCC_Saturday_Barn_Raising_Foundation_Laying__Rl-LlsQFTsM__en.txt
+
+Kind: captions
+Language: en
+sorry i forgot to turn on recording
+i mean mostly i listened to music when i
+was much younger not so much anymore
+but i always loved uh john baez he's not
+```
+
+Note: Scripts and Python code were created with the assistance of Claude Sonnet
 

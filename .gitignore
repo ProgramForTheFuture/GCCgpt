@@ -1,0 +1,7 @@
+# ignore generated files to avoid Git conflicts
+kb
+production
+bin/output
+
+# macOS
+.DS_Store
