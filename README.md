@@ -1,7 +1,7 @@
 # GCCgpt
 Code to automate Youtube transcript downloads for purpose of populating a custom GPT
 
-dlcaps.sh is a BASH Shell script for downloading VTT transcripts for a Youtube playlist:
+**dlcaps.sh** is a BASH Shell script for downloading VTT transcripts for a Youtube playlist:
 
 ```
 ../dlcaps.sh "https://www.youtube.com/watch?v=HjChjRnz26c&list=PLOW4_Hp8_910IJ4uEe0H-oBRvSkkr1FrM"
@@ -27,7 +27,8 @@ ls *.vtt
 20250518 Collaborology Study Group [HjChjRnz26c].en.vtt
 ```
 
-vtt_list_script.sh creates a script to process these VTT files
+**vtt_list_script.sh** creates a script to process these VTT files
+
 ```
 ./vtt_list_script.sh
 Listing all .vtt files...
@@ -55,7 +56,7 @@ cat vttlist.sh
 ./vtt.sh "20250518 Collaborology Study Group [HjChjRnz26c].en.vtt"
 ```
 
-Execution of script
+Execution of script:
 ```
 ./vttlist.sh
 Renamed file: 20241103_Collaborology_Study_Group__3ixzr0LLk24__en
@@ -130,4 +131,4 @@ Well, the
 uh the fact that I I woke up at 6:30
 ```
 
-You can then upload the transcripts into a custom GPT
+You can then upload the transcripts into a custom GPT.
