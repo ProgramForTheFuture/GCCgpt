@@ -132,3 +132,6 @@ uh the fact that I I woke up at 6:30
 ```
 
 You can then upload the transcripts into a custom GPT.
+
+Note: Scripts and Python code were created with the assistance of Claude Sonnet 3.7
+
